@@ -4,6 +4,8 @@ const port = process.env.PORT || 3000;
 const handler = require('github-webhook-handler')({ path: '/webhook', secret: '' });
 const bodyParser = require('body-parser');
 
+const bot = require('./bot');
+
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
@@ -12,8 +14,9 @@ app.get('/', (req, res) => {
 })
 
 app.post('/webhook', (req, res) => {    
-    console.log(req.body.repository.name);
-    console.log(req.body.ref);
+    const message = `${req.body.repository.name}\n${req.body.ref}`;
+    console.log(message);
+    bot.notify(message);
     res.json('Yes,Sir');
 });
 
