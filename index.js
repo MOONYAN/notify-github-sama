@@ -11,7 +11,6 @@ const config = {
 };
 const userId = process.env.USER_ID;
 const client = LineClient.connect(config);
-console.log(config);
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -23,6 +22,7 @@ app.get('/', (req, res) => {
 app.post('/webhook', (req, res) => {    
     const message = `${req.body.repository.name}\n${req.body.ref}`;
     console.log(message);
+    console.log(config);
     client.pushText(userId, message);
     res.json('Yes,Sir');
 });
