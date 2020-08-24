@@ -9,6 +9,10 @@ app.get('/', (req, res) => {
     res.json('hello');
 })
 
+app.post('/webhook', (req, res) => {
+    res.json('Yes,Sir');
+});
+
 app.listen(port, () => console.log(`Listen on http://localhost:${port}`));
 
 handler.on('error', function (err) {
