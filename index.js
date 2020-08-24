@@ -1,28 +1,30 @@
-const http = require('http')
-const createHandler = require('github-webhook-handler')
-const handler = createHandler({ path: '/webhook', secret: 'myhashsecret' })
+const app = require('express')();
+const bodyParser = require('body-parser');
+const port = process.env.PORT || 3000;
+const handler = require('github-webhook-handler')({ path: '/webhook', secret: '' });
 
-http.createServer(function (req, res) {
-  handler(req, res, function (err) {
-    res.statusCode = 404
-    res.end('no such location')
-  })
-}).listen(3000)
+app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
+    res.json('hello');
+})
+
+app.listen(port, () => console.log(`Listen on http://localhost:${port}`));
 
 handler.on('error', function (err) {
-  console.error('Error:', err.message)
+    console.error('Error:', err.message)
 })
 
 handler.on('push', function (event) {
-  console.log('Received a push event for %s to %s',
-    event.payload.repository.name,
-    event.payload.ref)
+    console.log('Received a push event for %s to %s',
+        event.payload.repository.name,
+        event.payload.ref)
 })
 
 handler.on('issues', function (event) {
-  console.log('Received an issue event for %s action=%s: #%d %s',
-    event.payload.repository.name,
-    event.payload.action,
-    event.payload.issue.number,
-    event.payload.issue.title)
+    console.log('Received an issue event for %s action=%s: #%d %s',
+        event.payload.repository.name,
+        event.payload.action,
+        event.payload.issue.number,
+        event.payload.issue.title)
 })
