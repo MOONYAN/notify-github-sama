@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 
 app.post('/webhook', (req, res) => {
     // console.log(`Repo: ${req.payload.repository.name} \nRef ${req.payload.ref}`);
-    console.log(`${req.payload}`);
+    console.log(`${req}`);
     res.send('Yes,Sir');
 })
 
