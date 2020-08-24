@@ -11,9 +11,10 @@ app.get('/', (req, res) => {
 })
 
 app.post('/webhook', (req, res) => {
-    console.log('Received a push event for %s to %s',
-        req.body.payload.repository.name,
-        req.body.payload.ref);
+    // console.log('Received a push event for %s to %s',
+    //     req.body.payload.repository.name,
+    //     req.body.payload.ref);
+    console.log(req.body.payload)
     res.json('Yes,Sir');
 });
 
