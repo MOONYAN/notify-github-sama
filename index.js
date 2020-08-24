@@ -12,11 +12,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/webhook', (req, res) => {
+    console.log(`Repo: ${req.payload.repository.name} \nRef ${req.payload.ref}`);
     res.send('Yes,Sir');
 })
 
 app.listen(port, () => console.log(`listening on http://localhost:${port}`));
-
-github.on('error', err => console.error('Error:', err.message));
-
-github.on('push', ({ payload }) => console.log(`Receive $push for ${payload.repository.name} to ${payload.repository.ref}`));
