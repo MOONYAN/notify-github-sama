@@ -7,15 +7,14 @@ const github = require('express-github-webhook')({
 });
 
 app.use(bodyParser.json());
+app.use(github);
 
-app.get('/', (req, res) => {
-    res.send('hello');
+github.on('*', function (event, repo, data) {
+    console.log(event);
 });
 
-app.post('/webhook', (req, res) => {
-    // console.log(`Repo: ${req.payload.repository.name} \nRef ${req.payload.ref}`);
-    console.log(`${req.body}`);
-    res.send('Yes,Sir');
-})
+github.on('push', function (repo, data) {
+    console.log(`repo:${repo} \ndata${data}`);
+});
 
 app.listen(port, () => console.log(`listening on http://localhost:${port}`));
