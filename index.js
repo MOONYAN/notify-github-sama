@@ -22,7 +22,6 @@ app.get('/', (req, res) => {
 app.post('/webhook', (req, res) => {    
     const message = `${req.body.repository.name}\n${req.body.ref}`;
     console.log(message);
-    console.log(config);
     client.pushText(userId, message);
     res.json('Yes,Sir');
 });
