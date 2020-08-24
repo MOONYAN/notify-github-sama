@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const handler = require('github-webhook-handler')({ path: '/webhook', secret: '' });
+const bodyParser = require('body-parser');
 
-app.use(express.json());
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     res.json('hello');
