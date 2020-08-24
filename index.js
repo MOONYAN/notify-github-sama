@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
 const handler = require('github-webhook-handler')({ path: '/webhook', secret: '' });
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/webhook', (req, res) => {
-    console.log(`REF: ${req.body.payload.repository.ref}\nName: ${req.body.payload.repository.name}`);
+    console.log(`REF: ${req.body.payload.ref}\nName: ${req.body.payload.repository.name}`);
     res.json('Yes,Sir');
 });
 
