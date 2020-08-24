@@ -9,6 +9,8 @@ const userId = process.env.USER_ID;
 
 const client = LineClient.connect(config);
 
+console.log(config);
+
 module.exports = {
     notify(message) {
         client.pushText(userId, message);
