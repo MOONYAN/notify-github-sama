@@ -12,7 +12,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/webhook', (req, res) => {
-    console.log(`Repo: ${req.payload.repository.name} \nRef ${req.payload.ref}`);
+    // console.log(`Repo: ${req.payload.repository.name} \nRef ${req.payload.ref}`);
+    console.log(`${req.payload}`);
     res.send('Yes,Sir');
 })
 
