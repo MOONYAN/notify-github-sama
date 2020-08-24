@@ -1,11 +1,11 @@
 const { LineClient } = require('messaging-api-line');
 
 const config = {
-    accessToken: process.env.ACCESS_TOKEN || 'accessToken',
-    channelSecret: process.env.CHANNEL_SECRET || 'channelSecret',
+    accessToken: process.env.ACCESS_TOKEN,
+    channelSecret: process.env.CHANNEL_SECRET,
 };
 
-const userId = process.env.USER_ID || 'userId'
+const userId = process.env.USER_ID;
 
 const client = LineClient.connect(config);
 
