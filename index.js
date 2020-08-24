@@ -11,6 +11,10 @@ app.get('/', (req, res) => {
     res.send('hello');
 });
 
+app.post('/webhook', (req, res) => {
+    res.send('Yes,Sir');
+})
+
 app.listen(port, () => console.log(`listening on http://localhost:${port}`));
 
 github.on('error', err => console.error('Error:', err.message));
