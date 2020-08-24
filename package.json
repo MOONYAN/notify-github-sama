@@ -20,6 +20,6 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "github-webhook-handler": "^1.0.0"
+    "express-github-webhook": "^1.0.6"
   }
 }
