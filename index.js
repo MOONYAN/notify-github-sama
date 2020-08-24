@@ -4,6 +4,7 @@ const port = process.env.PORT || 3000;
 const handler = require('github-webhook-handler')({ path: '/webhook', secret: '' });
 const bodyParser = require('body-parser');
 
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
