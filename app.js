@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
+const handler = require('github-webhook-handler')({ path: '/webhook', secret: '' });
 const sama = require('./routes/sama');
 
 app.use(cors());
