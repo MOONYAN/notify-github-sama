@@ -1,5 +1,7 @@
 # notify-github-sama
 
+As a web service that listen to the GitHub webhook for notifying Line users.
+
 ## Goal
 
 - link github webhook
@@ -21,3 +23,7 @@
     - ACCESS_TOKEN
     - CHANNEL_SECRET
     - USER_ID
+
+## Result
+
+![](demo/github_sama.gif)
